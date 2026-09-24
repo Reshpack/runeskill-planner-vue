@@ -1,0 +1,54 @@
+:root {
+  --brown-900: #21170f;
+  --brown-800: #352313;
+  --brown-700: #56391f;
+
+  --gold-500: #b98242;
+  --gold-300: #d7b47d;
+
+  --cream-100: #f8f3ea;
+  --cream-50: #fcfaf6;
+
+  --surface: #ffffff;
+
+  --text: #28211b;
+  --text-muted: #71665c;
+
+  --border: #e1d7c8;
+
+  --max-width: 1180px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--cream-50);
+  color: var(--text);
+
+  font-family: "Merriweather", serif;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "MedievalSharp", cursive;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
