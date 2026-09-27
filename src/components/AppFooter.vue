@@ -7,19 +7,153 @@ function changeView(view) {
 </script>
 
 <template>
-  <footer>
-    <h3>RuneSkill Planner</h3>
+  <footer class="site-footer">
 
-    <p>
-      A RuneScape-inspired skill planning student project.
-    </p>
+    <div class="footer-inner">
 
-    <nav aria-label="Footer navigation">
-      <button @click="changeView('home')">Home</button>
-      <button @click="changeView('planner')">Planner</button>
-      <button @click="changeView('about')">About</button>
-    </nav>
+      <div class="footer-about">
+        <h3>RuneSkill Planner</h3>
 
-    <p>&copy; 2026 RuneSkill Planner.</p>
+        <p>
+          A RuneScape-inspired planning tool for organising
+          skill goals and training progress.
+        </p>
+
+        <p class="project-note">
+          SIT120 student project.
+        </p>
+      </div>
+
+      <nav
+        class="footer-nav"
+        aria-label="Footer navigation"
+      >
+        <h4>Navigate</h4>
+
+        <a
+          href="#home"
+          @click.prevent="changeView('home')"
+        >
+          Home
+        </a>
+
+        <a
+          href="#planner"
+          @click.prevent="changeView('planner')"
+        >
+          Planner
+        </a>
+
+        <a
+          href="#about"
+          @click.prevent="changeView('about')"
+        >
+          About
+        </a>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 RuneSkill Planner. Website by Suresh Packiry.
+      </p>
+    </div>
+
   </footer>
 </template>
+
+<style scoped>
+.site-footer {
+  margin-top: auto;
+
+  background-color: var(--brown-900);
+  color: white;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 2rem;
+}
+
+/* About */
+
+.footer-about {
+  max-width: 32rem;
+}
+
+.footer-about h3,
+.footer-nav h4 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+
+  color: var(--gold-300);
+}
+
+.footer-about p {
+  margin: 0 0 0.6rem;
+
+  color: #ddd4c8;
+}
+
+.project-note {
+  font-size: 0.85rem;
+  color: #a99b8a !important;
+}
+
+/* Navigation */
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 0.35rem;
+}
+
+.footer-nav a {
+  color: #ddd4c8;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-300);
+  text-decoration: underline;
+}
+
+/* Copyright */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 1rem 1.25rem;
+
+  text-align: center;
+  font-size: 0.85rem;
+
+  color: #a99b8a;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Tablet and desktop */
+
+@media (min-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .footer-nav {
+    min-width: 9rem;
+  }
+}
+</style>
