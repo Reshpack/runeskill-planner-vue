@@ -1,34 +1,31 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 defineProps({
   activeView: {
     type: String,
-    default: 'home',
+    default: "home",
   },
-})
+});
 
-const emit = defineEmits(['change-view'])
+const emit = defineEmits(["change-view"]);
 
-const menuOpen = ref(false)
+const menuOpen = ref(false);
 
 function toggleMenu() {
-  menuOpen.value = !menuOpen.value
+  menuOpen.value = !menuOpen.value;
 }
 
 function changeView(view) {
-  emit('change-view', view)
+  emit("change-view", view);
 
-  // Close the mobile menu after choosing a page
-  menuOpen.value = false
+  menuOpen.value = false;
 }
 </script>
 
 <template>
   <header class="site-header">
     <div class="header-inner">
-
-      <!-- Website brand -->
       <a
         href="#home"
         class="brand"
@@ -37,17 +34,15 @@ function changeView(view) {
         RuneSkill Planner
       </a>
 
-      <!-- Mobile hamburger button -->
       <button
         class="menu-toggle"
         @click="toggleMenu"
         :aria-expanded="menuOpen"
         aria-label="Toggle navigation"
       >
-        {{ menuOpen ? '✕' : '☰' }}
+        {{ menuOpen ? "✕" : "☰" }}
       </button>
 
-      <!-- Main navigation -->
       <nav
         class="nav-links"
         :class="{ open: menuOpen }"
@@ -77,7 +72,6 @@ function changeView(view) {
           About
         </a>
       </nav>
-
     </div>
   </header>
 </template>
@@ -85,11 +79,13 @@ function changeView(view) {
 <style scoped>
 .site-header {
   background-color: var(--brown-900);
+
   border-bottom: 3px solid var(--gold-500);
 }
 
 .header-inner {
   max-width: var(--max-width);
+
   margin: 0 auto;
   padding: 0.9rem 1.25rem;
 
@@ -99,10 +95,9 @@ function changeView(view) {
   flex-wrap: wrap;
 }
 
-/* Brand */
-
 .brand {
   color: var(--gold-300);
+
   text-decoration: none;
 
   font-family: "MedievalSharp", cursive;
@@ -111,30 +106,29 @@ function changeView(view) {
   letter-spacing: 0.02rem;
 }
 
-/* Hamburger */
-
 .menu-toggle {
+  padding: 0.35rem 0.55rem;
+
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.35rem;
 
   background-color: transparent;
   color: white;
 
-  padding: 0.35rem 0.55rem;
-
   font-size: 1.35rem;
+
   cursor: pointer;
 }
-
-/* Mobile navigation */
 
 .nav-links {
   display: none;
 
   width: 100%;
+
   margin-top: 0.8rem;
 
   flex-direction: column;
+
   gap: 0.2rem;
 }
 
@@ -148,6 +142,7 @@ function changeView(view) {
   border-radius: 0.3rem;
 
   color: white;
+
   text-decoration: none;
 
   font-size: 0.95rem;
@@ -162,8 +157,6 @@ function changeView(view) {
   color: var(--brown-900);
 }
 
-/* Tablet and desktop */
-
 @media (min-width: 768px) {
   .menu-toggle {
     display: none;
@@ -173,10 +166,12 @@ function changeView(view) {
     display: flex;
 
     width: auto;
+
     margin-top: 0;
 
     flex-direction: row;
     align-items: center;
+
     gap: 0.25rem;
   }
 

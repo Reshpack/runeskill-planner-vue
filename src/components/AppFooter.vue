@@ -1,16 +1,14 @@
 <script setup>
-const emit = defineEmits(['change-view'])
+const emit = defineEmits(["change-view"]);
 
 function changeView(view) {
-  emit('change-view', view)
+  emit("change-view", view);
 }
 </script>
 
 <template>
   <footer class="site-footer">
-
     <div class="footer-inner">
-
       <div class="footer-about">
         <h3>RuneSkill Planner</h3>
 
@@ -52,6 +50,13 @@ function changeView(view) {
         </a>
       </nav>
 
+      <div class="footer-contact">
+        <h4>Contact</h4>
+
+        <a href="mailto:your-email@deakin.edu.au">
+          your-email@deakin.edu.au
+        </a>
+      </div>
     </div>
 
     <div class="footer-bottom">
@@ -59,7 +64,6 @@ function changeView(view) {
         &copy; 2026 RuneSkill Planner. Website by Suresh Packiry.
       </p>
     </div>
-
   </footer>
 </template>
 
@@ -73,6 +77,7 @@ function changeView(view) {
 
 .footer-inner {
   max-width: var(--max-width);
+
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
 
@@ -82,14 +87,13 @@ function changeView(view) {
   gap: 2rem;
 }
 
-/* About */
-
 .footer-about {
   max-width: 32rem;
 }
 
 .footer-about h3,
-.footer-nav h4 {
+.footer-nav h4,
+.footer-contact h4 {
   margin-top: 0;
   margin-bottom: 0.6rem;
 
@@ -103,11 +107,10 @@ function changeView(view) {
 }
 
 .project-note {
-  font-size: 0.85rem;
   color: #a99b8a !important;
-}
 
-/* Navigation */
+  font-size: 0.85rem;
+}
 
 .footer-nav {
   display: flex;
@@ -117,43 +120,45 @@ function changeView(view) {
   gap: 0.35rem;
 }
 
-.footer-nav a {
+.footer-nav a,
+.footer-contact a {
   color: #ddd4c8;
+
   text-decoration: none;
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover,
+.footer-contact a:hover {
   color: var(--gold-300);
+
   text-decoration: underline;
 }
 
-/* Copyright */
-
 .footer-bottom {
+  padding: 1rem 1.25rem;
+
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 
-  padding: 1rem 1.25rem;
+  color: #a99b8a;
 
   text-align: center;
   font-size: 0.85rem;
-
-  color: #a99b8a;
 }
 
 .footer-bottom p {
   margin: 0;
 }
 
-/* Tablet and desktop */
-
 @media (min-width: 768px) {
   .footer-inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     align-items: start;
+
+    gap: 4rem;
   }
 
   .footer-nav {
-    min-width: 9rem;
+    min-width: 8rem;
   }
 }
 </style>

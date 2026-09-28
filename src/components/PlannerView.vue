@@ -43,21 +43,31 @@ const goals = [
       <div class="section-heading">
         <div>
           <p class="eyebrow">Saved goals</p>
+
           <h2>Your current training plans.</h2>
         </div>
 
-        <p class="goal-count">{{ goals.length }} active goals</p>
+        <p class="goal-count">
+          {{ goals.length }} active goals
+        </p>
       </div>
 
       <div class="goal-grid">
-        <article v-for="goal in goals" :key="goal.skill" class="goal-card">
+        <article
+          v-for="goal in goals"
+          :key="goal.skill"
+          class="goal-card"
+        >
           <div class="goal-card-top">
             <div>
               <p class="goal-label">Skill</p>
+
               <h3>{{ goal.skill }}</h3>
             </div>
 
-            <span class="goal-percent"> {{ goal.progress }}% </span>
+            <span class="goal-percent">
+              {{ goal.progress }}%
+            </span>
           </div>
 
           <div class="goal-stats">
@@ -84,7 +94,9 @@ const goals = [
             ></div>
           </div>
 
-          <p class="progress-text">{{ goal.progress }}% complete</p>
+          <p class="progress-text">
+            {{ goal.progress }}% complete
+          </p>
         </article>
       </div>
     </section>
@@ -93,7 +105,9 @@ const goals = [
       <div class="guide-heading">
         <p class="eyebrow">Guide preview</p>
 
-        <h2>Training advice without the information overload.</h2>
+        <h2>
+          Training advice without the information overload.
+        </h2>
 
         <p>
           Keep a useful training method close to your goal so you can move from
@@ -106,7 +120,7 @@ const goals = [
           <img
             :src="fishingGuideImage"
             alt="Player using the 3-tick Barbarian Fishing method"
-          />
+          >
 
           <figcaption>
             Example of the 3-tick Barbarian Fishing method.
@@ -116,7 +130,9 @@ const goals = [
         <div class="guide-content">
           <p class="guide-skill">Fishing</p>
 
-          <h3>Levels 58–71/99: Barbarian Fishing</h3>
+          <h3>
+            Levels 58–71/99: Barbarian Fishing
+          </h3>
 
           <p>
             Barbarian Fishing is a fast training option for players who want
@@ -166,17 +182,11 @@ const goals = [
   width: 100%;
 }
 
-/* Intro */
-
-.planner-hero {
-  max-width: var(--max-width);
-  margin: 0 auto;
-
-  padding: 4rem 1.25rem 3rem;
-}
-
 .planner-hero {
   max-width: 50rem;
+
+  margin: 0 auto;
+  padding: 4rem 1.25rem 3rem;
 }
 
 .planner-hero h1 {
@@ -189,21 +199,19 @@ const goals = [
 }
 
 .planner-hero > p:last-child {
-  margin: 0;
-
   max-width: 40rem;
+
+  margin: 0;
 
   color: var(--text-muted);
 
   font-size: 1.05rem;
 }
 
-/* Saved goals */
-
 .saved-goals {
   max-width: var(--max-width);
-  margin: 0 auto;
 
+  margin: 0 auto;
   padding: 2rem 1.25rem 5rem;
 }
 
@@ -232,8 +240,6 @@ const goals = [
 
   font-size: 0.9rem;
 }
-
-/* Goal grid */
 
 .goal-grid {
   display: grid;
@@ -282,8 +288,6 @@ const goals = [
   font-weight: 700;
 }
 
-/* Goal stats */
-
 .goal-stats {
   margin: 1.5rem 0;
 
@@ -293,14 +297,16 @@ const goals = [
   gap: 0.75rem;
 }
 
-.goal-stats div {
+.goal-stats div,
+.guide-facts div {
   display: flex;
   flex-direction: column;
 
   gap: 0.15rem;
 }
 
-.goal-stats span {
+.goal-stats span,
+.guide-facts span {
   color: var(--text-muted);
 
   font-size: 0.7rem;
@@ -309,8 +315,6 @@ const goals = [
 .goal-stats strong {
   color: var(--brown-900);
 }
-
-/* Progress */
 
 .progress-bar {
   width: 100%;
@@ -337,24 +341,25 @@ const goals = [
   font-size: 0.8rem;
 }
 
-/* Guide section */
-.guide-section {
-  background-color: var(--cream-100);
-}
+/* Guide */
 
 .guide-section {
   padding: 5rem 1.25rem;
+
+  background-color: var(--cream-100);
 }
 
 .guide-heading,
 .guide-card {
   max-width: var(--max-width);
+
   margin-left: auto;
   margin-right: auto;
 }
 
 .guide-heading {
   max-width: 42rem;
+
   margin-bottom: 2.5rem;
 }
 
@@ -373,8 +378,6 @@ const goals = [
   color: var(--text-muted);
 }
 
-/* Main guide */
-
 .guide-card {
   display: grid;
   grid-template-columns: 1fr;
@@ -390,7 +393,10 @@ const goals = [
 .guide-image img {
   width: 100%;
 
-  object-fit: fill;
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+
   border-radius: 0.5rem;
 }
 
@@ -401,8 +407,6 @@ const goals = [
 
   font-size: 0.75rem;
 }
-
-/* Guide content */
 
 .guide-content {
   max-width: 36rem;
@@ -433,8 +437,6 @@ const goals = [
   color: var(--text-muted);
 }
 
-/* Guide facts */
-
 .guide-facts {
   margin: 1.5rem 0;
 
@@ -444,24 +446,9 @@ const goals = [
   gap: 1rem;
 }
 
-.guide-facts div {
-  display: flex;
-  flex-direction: column;
-
-  gap: 0.2rem;
-}
-
-.guide-facts span {
-  color: var(--text-muted);
-
-  font-size: 0.7rem;
-}
-
 .guide-facts strong {
   color: var(--brown-900);
 }
-
-/* External link */
 
 .guide-link {
   display: inline-block;
@@ -471,11 +458,10 @@ const goals = [
   color: var(--brown-800);
 
   font-weight: 700;
+
   text-decoration-color: var(--gold-500);
   text-underline-offset: 0.25rem;
 }
-
-/* Tablet */
 
 @media (min-width: 768px) {
   .section-heading {
@@ -496,8 +482,6 @@ const goals = [
     gap: 4rem;
   }
 }
-
-/* Desktop */
 
 @media (min-width: 1024px) {
   .goal-grid {

@@ -11,16 +11,33 @@ import ContactForm from "./components/ContactForm.vue";
 
 const activeView = ref("home");
 
+const submittedGoal = ref(null);
+
 function changeView(view) {
   activeView.value = view;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+function handleFormSubmit(goal) {
+  submittedGoal.value = goal;
 }
 </script>
 
 <template>
   <div id="app-layout">
-    <AppHeader :activeView="activeView" @change-view="changeView" />
+    <AppHeader
+      :active-view="activeView"
+      @change-view="changeView"
+    />
 
-    <HomeView v-if="activeView === 'home'" @change-view="changeView" />
+    <HomeView
+      v-if="activeView === 'home'"
+      @change-view="changeView"
+    />
 
     <template v-else-if="activeView === 'planner'">
       <PlannerView />
@@ -29,14 +46,20 @@ function changeView(view) {
         form-title="Create Your Next Skill Goal"
         @submit-form="handleFormSubmit"
       />
-      <article v-if="submittedGoal" class="acknowledgement-card">
-        <p class="acknowledgement-label">Goal created</p>
 
-        <h3>
-          {{ submittedGoal.goalName }}
-        </h3>
+      <article
+        v-if="submittedGoal"
+        class="acknowledgement-card"
+      >
+        <p class="acknowledgement-label">
+          Goal created
+        </p>
 
-        <p>Your new training goal has been saved with the following details:</p>
+        <h3>{{ submittedGoal.goalName }}</h3>
+
+        <p>
+          Your new training goal has been saved with the following details:
+        </p>
 
         <ul>
           <li>
@@ -74,7 +97,9 @@ function changeView(view) {
       </article>
     </template>
 
-    <AboutView v-else-if="activeView === 'about'" />
+    <AboutView
+      v-else-if="activeView === 'about'"
+    />
 
     <AppFooter @change-view="changeView" />
   </div>
@@ -83,11 +108,11 @@ function changeView(view) {
 <style>
 #app-layout {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
 }
 
-/* Acknowledgement */
 .acknowledgement-card {
   width: calc(100% - 2.5rem);
   max-width: 48rem;

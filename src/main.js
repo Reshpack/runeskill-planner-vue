@@ -1,12 +1,7 @@
-import { createApp } from 'vue'
-import './assets/styles.css'
-import App from './App.vue'
-import AppHeader from './components/AppHeader.vue'
-import AppFooter from './components/AppFooter.vue'
+import { createApp } from "vue";
 
-const app = createApp(App)
+import "./assets/styles.css";
 
-app.component("AppHeader", AppHeader).component("AppFooter", AppFooter)
+import App from "./App.vue";
 
-app.mount('#app')
-in indexedDB.html
+createApp(App).mount("#app");

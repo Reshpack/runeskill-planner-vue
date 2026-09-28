@@ -1,77 +1,77 @@
 <script setup>
-import heroImage from '../assets/images/skillcapes.png'
-import woodcuttingImage from '../assets/images/wcing.jpg'
-import farmingImage from '../assets/images/farming.png'
-import bossImage from '../assets/images/boss-fight.jpg'
+import heroImage from "../assets/images/skillcapes.png";
+import woodcuttingImage from "../assets/images/wcing.jpg";
+import farmingImage from "../assets/images/farming.png";
+import bossImage from "../assets/images/boss-fight.jpg";
 
-const emit = defineEmits(['change-view'])
-
+const emit = defineEmits(["change-view"]);
 
 const features = [
   {
-    number: '01',
-    title: 'Choose a Skill',
-    text: 'Pick the skill you want to train, from gathering skills such as Fishing and Woodcutting to combat and support skills.',
+    number: "01",
+    title: "Choose a Skill",
+    text: "Pick the skill you want to train, from gathering skills such as Fishing and Woodcutting to combat and support skills.",
   },
   {
-    number: '02',
-    title: 'Set Your Goal',
-    text: 'Enter your current and target levels so you always know what you are working towards.',
+    number: "02",
+    title: "Set Your Goal",
+    text: "Enter your current and target levels so you always know what you are working towards.",
   },
   {
-    number: '03',
-    title: 'Track Progress',
-    text: 'Keep your goals organised and quickly see what you have completed and what still needs attention.',
+    number: "03",
+    title: "Track Progress",
+    text: "Keep your goals organised and quickly see what you have completed and what still needs attention.",
   },
-]
+];
 
 const plans = [
   {
-    name: 'Free',
-    price: '$0',
-    description: 'A simple starting point for tracking a few skill goals.',
+    name: "Free",
+    price: "$0",
+    description:
+      "A simple starting point for tracking a few skill goals.",
     features: [
-      '3 saved skill goals',
-      'Progress tracking',
-      'Basic skill guides',
+      "3 saved skill goals",
+      "Progress tracking",
+      "Basic skill guides",
     ],
     featured: false,
   },
   {
-    name: 'Premium',
-    price: '$4.99 / month',
-    description: 'For players who want more flexibility and detailed planning.',
+    name: "Premium",
+    price: "$4.99 / month",
+    description:
+      "For players who want more flexibility and detailed planning.",
     features: [
-      'Unlimited saved goals',
-      'Full skill guides',
-      'Training filters',
+      "Unlimited saved goals",
+      "Full skill guides",
+      "Training filters",
     ],
     featured: true,
   },
   {
-    name: 'Family',
-    price: '$7.99 / month',
-    description: 'Shared planning features for multiple RuneScape players.',
+    name: "Family",
+    price: "$7.99 / month",
+    description:
+      "Shared planning features for multiple RuneScape players.",
     features: [
-      'Unlimited saved goals',
-      'Full guide access',
-      'Up to 4 users',
+      "Unlimited saved goals",
+      "Full guide access",
+      "Up to 4 users",
     ],
     featured: false,
   },
-]
-
+];
 
 function openPlanner() {
-  emit('change-view', 'planner')
+  emit("change-view", "planner");
 }
 </script>
 
 <template>
   <main class="home-page">
-
+    <!-- Hero -->
     <section class="hero-section">
-
       <div class="hero-copy">
         <p class="eyebrow">
           RuneScape skill planning made simple
@@ -96,7 +96,10 @@ function openPlanner() {
             Start Planning
           </button>
 
-          <a href="#features" class="secondary-link">
+          <a
+            href="#features"
+            class="secondary-link"
+          >
             See how it works
           </a>
         </div>
@@ -108,238 +111,246 @@ function openPlanner() {
           alt="RuneScape inspired skill capes"
         >
       </div>
-
     </section>
 
+    <!-- Features -->
     <section
-  id="features"
-  class="features-section"
->
-  <div class="section-heading">
-    <p class="eyebrow">How it works</p>
-
-    <h2>Everything you need to plan your next skill goal.</h2>
-
-    <p>
-      Keep the important parts of your training plan together without
-      constantly switching between notes, calculators and guides.
-    </p>
-  </div>
-
-  <div class="feature-grid">
-    <article
-      v-for="feature in features"
-      :key="feature.number"
-      class="feature-item"
+      id="features"
+      class="features-section"
     >
-      <span class="feature-number">
-        {{ feature.number }}
-      </span>
+      <div class="section-heading">
+        <p class="eyebrow">How it works</p>
 
-      <h3>{{ feature.title }}</h3>
+        <h2>
+          Everything you need to plan your next skill goal.
+        </h2>
 
-      <p>{{ feature.text }}</p>
-    </article>
-  </div>
-</section>
-
-<section class="dashboard-section">
-  <div class="dashboard-image">
-    <img
-      :src="woodcuttingImage"
-      alt="RuneScape inspired woodcutting scene"
-    >
-  </div>
-
-  <div class="dashboard-content">
-    <p class="eyebrow">Progress at a glance</p>
-
-    <h2>A clearer way to keep track of your goals.</h2>
-
-    <p class="dashboard-description">
-      Save your current and target levels so you can quickly see
-      what you are working towards and how much progress you have made.
-    </p>
-
-    <article class="goal-preview">
-      <div class="goal-header">
-        <div>
-          <span class="goal-label">Current goal</span>
-          <h3>Woodcutting</h3>
-        </div>
-
-        <span class="goal-percent">58%</span>
+        <p>
+          Keep the important parts of your training plan together without
+          constantly switching between notes, calculators and guides.
+        </p>
       </div>
 
-      <div class="level-row">
-        <div>
-          <span>Current</span>
-          <strong>72</strong>
-        </div>
+      <div class="feature-grid">
+        <article
+          v-for="feature in features"
+          :key="feature.number"
+          class="feature-item"
+        >
+          <span class="feature-number">
+            {{ feature.number }}
+          </span>
 
-        <div>
-          <span>Target</span>
-          <strong>85</strong>
-        </div>
+          <h3>{{ feature.title }}</h3>
 
-        <div>
-          <span>XP Needed</span>
-          <strong>2.45M</strong>
-        </div>
+          <p>{{ feature.text }}</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Dashboard preview -->
+    <section class="dashboard-section">
+      <div class="dashboard-image">
+        <img
+          :src="woodcuttingImage"
+          alt="RuneScape inspired woodcutting scene"
+        >
       </div>
 
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
+      <div class="dashboard-content">
+        <p class="eyebrow">Progress at a glance</p>
+
+        <h2>
+          A clearer way to keep track of your goals.
+        </h2>
+
+        <p class="dashboard-description">
+          Save your current and target levels so you can quickly see
+          what you are working towards and how much progress you have made.
+        </p>
+
+        <article class="goal-preview">
+          <div class="goal-header">
+            <div>
+              <span class="goal-label">Current goal</span>
+              <h3>Woodcutting</h3>
+            </div>
+
+            <span class="goal-percent">58%</span>
+          </div>
+
+          <div class="level-row">
+            <div>
+              <span>Current</span>
+              <strong>72</strong>
+            </div>
+
+            <div>
+              <span>Target</span>
+              <strong>85</strong>
+            </div>
+
+            <div>
+              <span>XP Needed</span>
+              <strong>2.45M</strong>
+            </div>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+
+          <p class="progress-text">
+            58% of this training goal completed
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Guidance -->
+    <section class="guidance-section">
+      <div class="guidance-inner">
+        <div class="guidance-content">
+          <p class="eyebrow guidance-eyebrow">
+            Training guidance
+          </p>
+
+          <h2>
+            Spend less time searching and more time training.
+          </h2>
+
+          <p>
+            RuneSkill Planner keeps useful training information close to your
+            goals, helping you decide what to train next without jumping between
+            multiple websites.
+          </p>
+
+          <ul class="guidance-list">
+            <li>
+              <strong>Skill-specific methods</strong>
+              <span>
+                Find suitable training options for different skills.
+              </span>
+            </li>
+
+            <li>
+              <strong>Clear level ranges</strong>
+              <span>
+                See which methods make sense for your current level.
+              </span>
+            </li>
+
+            <li>
+              <strong>Different play styles</strong>
+              <span>
+                Compare faster, cheaper and lower-effort approaches.
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="guidance-image">
+          <img
+            :src="farmingImage"
+            alt="RuneScape inspired farming scene"
+          >
+
+          <figcaption>
+            Training guidance can sit alongside the goal you are working towards.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+      <div class="pricing-heading">
+        <p class="eyebrow">Planner options</p>
+
+        <h2>
+          Start simple, then expand your planning tools.
+        </h2>
+
+        <p>
+          RuneSkill Planner is a fictional SaaS concept, with options designed
+          around different levels of goal tracking.
+        </p>
       </div>
 
-      <p class="progress-text">
-        58% of this training goal completed
-      </p>
-    </article>
-  </div>
-</section>
+      <div class="pricing-grid">
+        <article
+          v-for="plan in plans"
+          :key="plan.name"
+          class="plan"
+          :class="{ featured: plan.featured }"
+        >
+          <div class="plan-top">
+            <p
+              v-if="plan.featured"
+              class="plan-badge"
+            >
+              Most Popular
+            </p>
 
-<section class="guidance-section">
-  <div class="guidance-inner">
+            <h3>{{ plan.name }}</h3>
 
-    <div class="guidance-content">
-      <p class="eyebrow guidance-eyebrow">
-        Training guidance
-      </p>
+            <p class="plan-price">
+              {{ plan.price }}
+            </p>
 
-      <h2>
-        Spend less time searching and more time training.
-      </h2>
+            <p class="plan-description">
+              {{ plan.description }}
+            </p>
+          </div>
 
-      <p>
-        RuneSkill Planner keeps useful training information close to your
-        goals, helping you decide what to train next without jumping between
-        multiple websites.
-      </p>
+          <ul class="plan-features">
+            <li
+              v-for="feature in plan.features"
+              :key="feature"
+            >
+              {{ feature }}
+            </li>
+          </ul>
 
-      <ul class="guidance-list">
-        <li>
-          <strong>Skill-specific methods</strong>
-          <span>Find suitable training options for different skills.</span>
-        </li>
+          <button
+            class="plan-button"
+            @click="openPlanner"
+          >
+            Start Planning
+          </button>
+        </article>
+      </div>
+    </section>
 
-        <li>
-          <strong>Clear level ranges</strong>
-          <span>See which methods make sense for your current level.</span>
-        </li>
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="final-cta-image">
+        <img
+          :src="bossImage"
+          alt="RuneScape inspired boss fight"
+        >
+      </div>
 
-        <li>
-          <strong>Different play styles</strong>
-          <span>Compare faster, cheaper and lower-effort approaches.</span>
-        </li>
-      </ul>
-    </div>
+      <div class="final-cta-content">
+        <p class="eyebrow">Ready to begin?</p>
 
-    <figure class="guidance-image">
-      <img
-        :src="farmingImage"
-        alt="RuneScape inspired farming scene"
-      >
+        <h2>
+          Build a better training plan.
+        </h2>
 
-      <figcaption>
-        Training guidance can sit alongside the goal you are working towards.
-      </figcaption>
-    </figure>
+        <p>
+          Set a clear skill goal, track your progress and keep the useful
+          information you need in one place.
+        </p>
 
-  </div>
-</section>
-
-<section class="pricing-section">
-
-<div class="pricing-heading">
-  <p class="eyebrow">Planner options</p>
-
-  <h2>
-    Start simple, then expand your planning tools.
-  </h2>
-
-  <p>
-    RuneSkill Planner is a fictional SaaS concept, with options designed
-    around different levels of goal tracking.
-  </p>
-</div>
-
-<div class="pricing-grid">
-
-  <article
-    v-for="plan in plans"
-    :key="plan.name"
-    class="plan"
-    :class="{ featured: plan.featured }"
-  >
-
-    <div class="plan-top">
-      <p
-        v-if="plan.featured"
-        class="plan-badge"
-      >
-        Most Popular
-      </p>
-
-      <h3>{{ plan.name }}</h3>
-
-      <p class="plan-price">
-        {{ plan.price }}
-      </p>
-
-      <p class="plan-description">
-        {{ plan.description }}
-      </p>
-    </div>
-
-    <ul class="plan-features">
-      <li
-        v-for="feature in plan.features"
-        :key="feature"
-      >
-        {{ feature }}
-      </li>
-    </ul>
-
-    <button
-      class="plan-button"
-      @click="openPlanner"
-    >
-      Start Planning
-    </button>
-
-  </article>
-
-</div>
-
-</section>
-
-<section class="final-cta">
-  <div class="final-cta-image">
-    <img
-      :src="bossImage"
-      alt="RuneScape inspired boss fight"
-    >
-  </div>
-
-  <div class="final-cta-content">
-    <p class="eyebrow">Ready to begin?</p>
-
-    <h2>Build a better training plan.</h2>
-
-    <p>
-      Set a clear skill goal, track your progress and keep the useful
-      information you need in one place.
-    </p>
-
-    <button
-      class="primary-button"
-      @click="openPlanner"
-    >
-      Open the Planner
-    </button>
-  </div>
-</section>
+        <button
+          class="primary-button"
+          @click="openPlanner"
+        >
+          Open the Planner
+        </button>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -348,10 +359,12 @@ function openPlanner() {
   width: 100%;
 }
 
+/* Hero */
+
 .hero-section {
   max-width: var(--max-width);
-  margin: 0 auto;
 
+  margin: 0 auto;
   padding: 3.5rem 1.25rem 4rem;
 
   display: grid;
@@ -361,22 +374,8 @@ function openPlanner() {
   align-items: center;
 }
 
-/* Hero text */
-
 .hero-copy {
   max-width: 42rem;
-}
-
-.eyebrow {
-  margin: 0 0 0.8rem;
-
-  color: var(--gold-500);
-
-  font-size: 0.8rem;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08rem;
 }
 
 .hero-copy h1 {
@@ -398,8 +397,6 @@ function openPlanner() {
   font-size: 1.05rem;
 }
 
-/* Buttons */
-
 .hero-actions {
   margin-top: 1.75rem;
 
@@ -411,15 +408,16 @@ function openPlanner() {
 }
 
 .primary-button {
+  padding: 0.75rem 1.15rem;
+
   border: none;
   border-radius: 0.35rem;
-
-  padding: 0.75rem 1.15rem;
 
   background-color: var(--brown-800);
   color: white;
 
   font-weight: 700;
+
   cursor: pointer;
 }
 
@@ -431,11 +429,10 @@ function openPlanner() {
   color: var(--brown-800);
 
   font-weight: 700;
+
   text-decoration-color: var(--gold-500);
   text-underline-offset: 0.25rem;
 }
-
-/* Hero image */
 
 .hero-visual {
   overflow: hidden;
@@ -449,23 +446,31 @@ function openPlanner() {
 
 .hero-visual img {
   width: 100%;
+
   aspect-ratio: 4 / 3;
 
   object-fit: cover;
 }
 
+/* Features */
+
 .features-section {
   max-width: var(--max-width);
+
   margin: 0 auto;
   padding: 4rem 1.25rem;
 }
 
 .section-heading {
   max-width: 42rem;
+
   margin-bottom: 2.5rem;
 }
 
-.section-heading h2 {
+.section-heading h2,
+.dashboard-content h2,
+.pricing-heading h2,
+.final-cta-content h2 {
   margin: 0 0 1rem;
 
   color: var(--brown-900);
@@ -474,18 +479,16 @@ function openPlanner() {
   line-height: 1.15;
 }
 
-.section-heading p:last-child {
+.section-heading p:last-child,
+.pricing-heading p:last-child {
   margin: 0;
 
   color: var(--text-muted);
 }
 
-/* Feature */
 .feature-grid {
   display: grid;
   grid-template-columns: 1fr;
-
-  gap: 0;
 }
 
 .feature-item {
@@ -519,8 +522,11 @@ function openPlanner() {
   color: var(--text-muted);
 }
 
+/* Dashboard */
+
 .dashboard-section {
   max-width: var(--max-width);
+
   margin: 0 auto;
   padding: 4rem 1.25rem;
 
@@ -533,11 +539,13 @@ function openPlanner() {
 
 .dashboard-image {
   overflow: hidden;
+
   border-radius: 0.5rem;
 }
 
 .dashboard-image img {
   width: 100%;
+
   aspect-ratio: 4 / 3;
 
   object-fit: cover;
@@ -547,22 +555,11 @@ function openPlanner() {
   max-width: 36rem;
 }
 
-.dashboard-content h2 {
-  margin: 0 0 1rem;
-
-  color: var(--brown-900);
-
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.15;
-}
-
 .dashboard-description {
   margin: 0 0 2rem;
 
   color: var(--text-muted);
 }
-
-/* Goal preview */
 
 .goal-preview {
   padding-top: 1.5rem;
@@ -599,8 +596,6 @@ function openPlanner() {
   font-weight: 700;
 }
 
-/* Levels */
-
 .level-row {
   margin: 1.5rem 0;
 
@@ -625,11 +620,7 @@ function openPlanner() {
 
 .level-row strong {
   color: var(--brown-900);
-
-  font-size: 1rem;
 }
-
-/* Progress */
 
 .progress-bar {
   width: 100%;
@@ -638,6 +629,7 @@ function openPlanner() {
   overflow: hidden;
 
   background-color: var(--cream-100);
+
   border-radius: 1rem;
 }
 
@@ -657,15 +649,17 @@ function openPlanner() {
 }
 
 /* Guidance */
+
 .guidance-section {
   background-color: var(--brown-900);
+
   color: white;
 }
 
 .guidance-inner {
   max-width: var(--max-width);
-  margin: 0 auto;
 
+  margin: 0 auto;
   padding: 4rem 1.25rem;
 
   display: grid;
@@ -698,8 +692,6 @@ function openPlanner() {
   color: #d8cec1;
 }
 
-/* Guidance list */
-
 .guidance-list {
   margin: 2rem 0 0;
   padding: 0;
@@ -728,8 +720,6 @@ function openPlanner() {
   font-size: 0.9rem;
 }
 
-/* Image */
-
 .guidance-image {
   margin: 0;
 }
@@ -738,6 +728,7 @@ function openPlanner() {
   width: 100%;
 
   aspect-ratio: 4 / 3;
+
   object-fit: cover;
 
   border-radius: 0.5rem;
@@ -752,10 +743,11 @@ function openPlanner() {
 }
 
 /* Pricing */
+
 .pricing-section {
   max-width: var(--max-width);
-  margin: 0 auto;
 
+  margin: 0 auto;
   padding: 5rem 1.25rem;
 }
 
@@ -764,23 +756,6 @@ function openPlanner() {
 
   margin-bottom: 3rem;
 }
-
-.pricing-heading h2 {
-  margin: 0 0 1rem;
-
-  color: var(--brown-900);
-
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.15;
-}
-
-.pricing-heading p:last-child {
-  margin: 0;
-
-  color: var(--text-muted);
-}
-
-/* Plans */
 
 .pricing-grid {
   display: grid;
@@ -802,10 +777,10 @@ function openPlanner() {
 }
 
 .plan.featured {
+  border-color: var(--brown-900);
+
   background-color: var(--brown-900);
   color: white;
-
-  border-color: var(--brown-900);
 }
 
 .plan h3 {
@@ -841,8 +816,6 @@ function openPlanner() {
   color: #d8cec1;
 }
 
-/* Badge */
-
 .plan-badge {
   width: fit-content;
 
@@ -856,10 +829,9 @@ function openPlanner() {
 
   font-size: 0.7rem;
   font-weight: 700;
+
   text-transform: uppercase;
 }
-
-/* Features */
 
 .plan-features {
   margin: 1.5rem 0;
@@ -882,8 +854,6 @@ function openPlanner() {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Button */
-
 .plan-button {
   width: 100%;
 
@@ -896,6 +866,7 @@ function openPlanner() {
   color: var(--brown-800);
 
   font-weight: 700;
+
   cursor: pointer;
 }
 
@@ -910,13 +881,11 @@ function openPlanner() {
   color: var(--brown-900);
 }
 
-.plan.featured .plan-button:hover {
-  background-color: white;
-}
+/* Final CTA */
 
-/* Final CTA section */
 .final-cta {
   max-width: var(--max-width);
+
   margin: 0 auto;
   padding: 4rem 1.25rem 5rem;
 
@@ -935,6 +904,7 @@ function openPlanner() {
 
 .final-cta-image img {
   width: 100%;
+
   aspect-ratio: 16 / 10;
 
   object-fit: cover;
@@ -944,23 +914,12 @@ function openPlanner() {
   max-width: 34rem;
 }
 
-.final-cta-content h2 {
-  margin: 0 0 1rem;
-
-  color: var(--brown-900);
-
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.15;
-}
-
 .final-cta-content > p:not(.eyebrow) {
   margin: 0 0 1.5rem;
 
   color: var(--text-muted);
 }
 
-
-/* Tablet */
 @media (min-width: 768px) {
   .feature-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -977,11 +936,8 @@ function openPlanner() {
 
   .feature-item:first-child {
     padding-left: 0;
-    border-left: none;
-  }
 
-  .feature-item:last-child {
-    padding-right: 0;
+    border-left: none;
   }
 
   .pricing-grid {
@@ -989,37 +945,27 @@ function openPlanner() {
   }
 }
 
-/* Desktop */
 @media (min-width: 900px) {
-    .hero-section {
-    grid-template-columns: 1fr 1fr;
-
-    min-height: 38rem;
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
-  }
-
-  .dashboard-section {
-    grid-template-columns: 1fr 1fr;
-
-    gap: 4rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .guidance-inner {
-    grid-template-columns: 1fr 1fr;
-
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-
-    gap: 4rem;
-  }
-
+  .hero-section,
+  .dashboard-section,
+  .guidance-inner,
   .final-cta {
     grid-template-columns: 1fr 1fr;
 
     gap: 4rem;
+  }
+
+  .hero-section {
+    min-height: 38rem;
+
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .dashboard-section,
+  .guidance-inner {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 </style>
