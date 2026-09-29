@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useThemeStore } from "../stores/theme";
+
+const themeStore = useThemeStore();
 
 const menuOpen = ref(false);
 
@@ -15,58 +18,57 @@ function closeMenu() {
 <template>
   <header class="site-header">
     <div class="header-inner">
-
-      <RouterLink
-        to="/"
-        class="brand"
-        @click="closeMenu"
-      >
+      <RouterLink to="/" class="brand" @click="closeMenu">
         RuneSkill Planner
       </RouterLink>
 
-      <button
-        class="menu-toggle"
-        @click="toggleMenu"
-        :aria-expanded="menuOpen"
-        aria-label="Toggle navigation"
-      >
-        {{ menuOpen ? "✕" : "☰" }}
-      </button>
-
-      <nav
-        class="nav-links"
-        :class="{ open: menuOpen }"
-        aria-label="Main navigation"
-      >
-
-        <RouterLink
-          to="/"
-          @click="closeMenu"
+      <div class="header-right">
+        <button
+          class="theme-toggle"
+          @click="themeStore.toggleDarkMode"
+          :aria-label="
+            themeStore.isDarkMode
+              ? 'Switch to light mode'
+              : 'Switch to dark mode'
+          "
         >
-          Home
-        </RouterLink>
+          {{ themeStore.isDarkMode ? "☀" : "☾" }}
+        </button>
 
-        <RouterLink
-          to="/planner"
-          @click="closeMenu"
+        <button
+          class="menu-toggle"
+          @click="toggleMenu"
+          :aria-expanded="menuOpen"
+          aria-label="Toggle navigation"
         >
-          Planner
-        </RouterLink>
+          {{ menuOpen ? "✕" : "☰" }}
+        </button>
 
-        <RouterLink
-          to="/about"
-          @click="closeMenu"
+        <nav
+          class="nav-links"
+          :class="{ open: menuOpen }"
+          aria-label="Main navigation"
         >
-          About
-        </RouterLink>
+          <RouterLink to="/" @click="closeMenu"> Home </RouterLink>
 
-      </nav>
+          <RouterLink to="/planner" @click="closeMenu"> Planner </RouterLink>
 
+          <RouterLink to="/about" @click="closeMenu"> About </RouterLink>
+        </nav>
+      </div>
     </div>
   </header>
 </template>
 
 <style scoped>
+.header-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
 .site-header {
   background-color: var(--brown-900);
 
@@ -83,6 +85,25 @@ function closeMenu() {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.theme-toggle {
+  padding: 0.4rem 0.65rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.35rem;
+
+  background-color: transparent;
+  color: white;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .brand {
@@ -148,6 +169,10 @@ function closeMenu() {
 }
 
 @media (min-width: 768px) {
+  .header-right {
+    flex-wrap: nowrap;
+  }
+
   .menu-toggle {
     display: none;
   }

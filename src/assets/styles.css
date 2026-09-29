@@ -14,6 +14,12 @@
   --text: #28211b;
   --text-muted: #71665c;
 
+  --heading-color: #21170f;
+  --link-color: #352313;
+
+  --button-bg: #352313;
+  --button-text: #ffffff;
+
   --border: #e1d7c8;
 
   --max-width: 1180px;
@@ -58,8 +64,6 @@ textarea {
   font: inherit;
 }
 
-/* Reusable section label */
-
 .eyebrow {
   margin: 0 0 0.8rem;
 
@@ -70,4 +74,33 @@ textarea {
 
   text-transform: uppercase;
   letter-spacing: 0.08rem;
+}
+
+.theme-dark {
+  --cream-50: #171411;
+  --cream-100: #201c18;
+
+  --surface: #27211c;
+
+  --text: #f1e9de;
+  --text-muted: #cbbdad;
+
+  --heading-color: #f7efe4;
+  --link-color: #e8c58e;
+
+  --button-bg: #d6a15f;
+  --button-text: #21170f;
+
+  --border: #514338;
+
+  --gold-500: #dda85f;
+  --gold-300: #e8c58e;
+
+  background-color: var(--cream-50);
+  color: var(--text);
+}
+
+.theme-light {
+  background-color: var(--cream-50);
+  color: var(--text);
 }

@@ -169,7 +169,7 @@ const values = [
 .about-copy h1 {
   margin: 0 0 1.25rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2.7rem, 8vw, 4.5rem);
   line-height: 1.05;
@@ -218,7 +218,7 @@ const values = [
 .future-content h2 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
@@ -277,7 +277,7 @@ const values = [
 .mission-item h3 {
   margin: 0.5rem 0;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 }
 
 .mission-item p {

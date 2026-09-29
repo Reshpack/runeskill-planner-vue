@@ -1,5 +1,13 @@
 <script setup>
 import fishingGuideImage from "../assets/images/3-tick-fishing.gif";
+import { ref } from "vue";
+import ContactForm from "./ContactForm.vue";
+
+const submittedGoal = ref(null);
+
+function handleFormSubmit(goal) {
+  submittedGoal.value = goal;
+}
 
 const goals = [
   {
@@ -47,17 +55,11 @@ const goals = [
           <h2>Your current training plans.</h2>
         </div>
 
-        <p class="goal-count">
-          {{ goals.length }} active goals
-        </p>
+        <p class="goal-count">{{ goals.length }} active goals</p>
       </div>
 
       <div class="goal-grid">
-        <article
-          v-for="goal in goals"
-          :key="goal.skill"
-          class="goal-card"
-        >
+        <article v-for="goal in goals" :key="goal.skill" class="goal-card">
           <div class="goal-card-top">
             <div>
               <p class="goal-label">Skill</p>
@@ -65,9 +67,7 @@ const goals = [
               <h3>{{ goal.skill }}</h3>
             </div>
 
-            <span class="goal-percent">
-              {{ goal.progress }}%
-            </span>
+            <span class="goal-percent"> {{ goal.progress }}% </span>
           </div>
 
           <div class="goal-stats">
@@ -94,9 +94,7 @@ const goals = [
             ></div>
           </div>
 
-          <p class="progress-text">
-            {{ goal.progress }}% complete
-          </p>
+          <p class="progress-text">{{ goal.progress }}% complete</p>
         </article>
       </div>
     </section>
@@ -105,9 +103,7 @@ const goals = [
       <div class="guide-heading">
         <p class="eyebrow">Guide preview</p>
 
-        <h2>
-          Training advice without the information overload.
-        </h2>
+        <h2>Training advice without the information overload.</h2>
 
         <p>
           Keep a useful training method close to your goal so you can move from
@@ -120,7 +116,7 @@ const goals = [
           <img
             :src="fishingGuideImage"
             alt="Player using the 3-tick Barbarian Fishing method"
-          >
+          />
 
           <figcaption>
             Example of the 3-tick Barbarian Fishing method.
@@ -130,9 +126,7 @@ const goals = [
         <div class="guide-content">
           <p class="guide-skill">Fishing</p>
 
-          <h3>
-            Levels 58–71/99: Barbarian Fishing
-          </h3>
+          <h3>Levels 58–71/99: Barbarian Fishing</h3>
 
           <p>
             Barbarian Fishing is a fast training option for players who want
@@ -174,6 +168,10 @@ const goals = [
         </div>
       </article>
     </section>
+    <ContactForm
+      form-title="Create Your Next Skill Goal"
+      @submit-form="handleFormSubmit"
+    />
   </main>
 </template>
 
@@ -192,7 +190,7 @@ const goals = [
 .planner-hero h1 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2.7rem, 8vw, 4.5rem);
   line-height: 1.05;
@@ -227,7 +225,7 @@ const goals = [
 .section-heading h2 {
   margin: 0;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
@@ -276,7 +274,7 @@ const goals = [
 .goal-card h3 {
   margin: 0;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: 1.5rem;
 }
@@ -313,7 +311,7 @@ const goals = [
 }
 
 .goal-stats strong {
-  color: var(--brown-900);
+  color: var(--heading-color);
 }
 
 .progress-bar {
@@ -366,7 +364,7 @@ const goals = [
 .guide-heading h2 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
@@ -427,7 +425,7 @@ const goals = [
 .guide-content h3 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: 1.8rem;
   line-height: 1.2;
@@ -447,7 +445,7 @@ const goals = [
 }
 
 .guide-facts strong {
-  color: var(--brown-900);
+  color: var(--heading-color);
 }
 
 .guide-link {

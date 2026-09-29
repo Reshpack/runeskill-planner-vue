@@ -34,8 +34,7 @@ const plans = [
   {
     name: "Free",
     price: "$0",
-    description:
-      "A simple starting point for tracking a few skill goals.",
+    description: "A simple starting point for tracking a few skill goals.",
     features: [
       "3 saved skill goals",
       "Progress tracking",
@@ -46,8 +45,7 @@ const plans = [
   {
     name: "Premium",
     price: "$4.99 / month",
-    description:
-      "For players who want more flexibility and detailed planning.",
+    description: "For players who want more flexibility and detailed planning.",
     features: [
       "Unlimited saved goals",
       "Full skill guides",
@@ -58,18 +56,11 @@ const plans = [
   {
     name: "Family",
     price: "$7.99 / month",
-    description:
-      "Shared planning features for multiple RuneScape players.",
-    features: [
-      "Unlimited saved goals",
-      "Full guide access",
-      "Up to 4 users",
-    ],
+    description: "Shared planning features for multiple RuneScape players.",
+    features: ["Unlimited saved goals", "Full guide access", "Up to 4 users"],
     featured: false,
   },
 ];
-
-
 </script>
 
 <template>
@@ -77,57 +68,38 @@ const plans = [
     <!-- Hero -->
     <section class="hero-section">
       <div class="hero-copy">
-        <p class="eyebrow">
-          RuneScape skill planning made simple
-        </p>
+        <p class="eyebrow">RuneScape skill planning made simple</p>
 
         <h1>
-          Plan the grind.<br>
+          Plan the grind.<br />
           See the progress.
         </h1>
 
         <p class="hero-description">
-          RuneSkill Planner helps players organise skill goals,
-          track progress and keep useful training information
-          together in one simple place.
+          RuneSkill Planner helps players organise skill goals, track progress
+          and keep useful training information together in one simple place.
         </p>
 
         <div class="hero-actions">
-          <button
-            class="primary-button"
-            @click="openPlanner"
-          >
+          <button class="primary-button" @click="openPlanner">
             Start Planning
           </button>
 
-          <a
-            href="#features"
-            class="secondary-link"
-          >
-            See how it works
-          </a>
+          <a href="#features" class="secondary-link"> See how it works </a>
         </div>
       </div>
 
       <div class="hero-visual">
-        <img
-          :src="heroImage"
-          alt="RuneScape inspired skill capes"
-        >
+        <img :src="heroImage" alt="RuneScape inspired skill capes" />
       </div>
     </section>
 
     <!-- Features -->
-    <section
-      id="features"
-      class="features-section"
-    >
+    <section id="features" class="features-section">
       <div class="section-heading">
         <p class="eyebrow">How it works</p>
 
-        <h2>
-          Everything you need to plan your next skill goal.
-        </h2>
+        <h2>Everything you need to plan your next skill goal.</h2>
 
         <p>
           Keep the important parts of your training plan together without
@@ -158,19 +130,17 @@ const plans = [
         <img
           :src="woodcuttingImage"
           alt="RuneScape inspired woodcutting scene"
-        >
+        />
       </div>
 
       <div class="dashboard-content">
         <p class="eyebrow">Progress at a glance</p>
 
-        <h2>
-          A clearer way to keep track of your goals.
-        </h2>
+        <h2>A clearer way to keep track of your goals.</h2>
 
         <p class="dashboard-description">
-          Save your current and target levels so you can quickly see
-          what you are working towards and how much progress you have made.
+          Save your current and target levels so you can quickly see what you
+          are working towards and how much progress you have made.
         </p>
 
         <article class="goal-preview">
@@ -204,9 +174,7 @@ const plans = [
             <div class="progress-fill"></div>
           </div>
 
-          <p class="progress-text">
-            58% of this training goal completed
-          </p>
+          <p class="progress-text">58% of this training goal completed</p>
         </article>
       </div>
     </section>
@@ -215,13 +183,9 @@ const plans = [
     <section class="guidance-section">
       <div class="guidance-inner">
         <div class="guidance-content">
-          <p class="eyebrow guidance-eyebrow">
-            Training guidance
-          </p>
+          <p class="eyebrow guidance-eyebrow">Training guidance</p>
 
-          <h2>
-            Spend less time searching and more time training.
-          </h2>
+          <h2>Spend less time searching and more time training.</h2>
 
           <p>
             RuneSkill Planner keeps useful training information close to your
@@ -254,13 +218,11 @@ const plans = [
         </div>
 
         <figure class="guidance-image">
-          <img
-            :src="farmingImage"
-            alt="RuneScape inspired farming scene"
-          >
+          <img :src="farmingImage" alt="RuneScape inspired farming scene" />
 
           <figcaption>
-            Training guidance can sit alongside the goal you are working towards.
+            Training guidance can sit alongside the goal you are working
+            towards.
           </figcaption>
         </figure>
       </div>
@@ -271,9 +233,7 @@ const plans = [
       <div class="pricing-heading">
         <p class="eyebrow">Planner options</p>
 
-        <h2>
-          Start simple, then expand your planning tools.
-        </h2>
+        <h2>Start simple, then expand your planning tools.</h2>
 
         <p>
           RuneSkill Planner is a fictional SaaS concept, with options designed
@@ -289,12 +249,7 @@ const plans = [
           :class="{ featured: plan.featured }"
         >
           <div class="plan-top">
-            <p
-              v-if="plan.featured"
-              class="plan-badge"
-            >
-              Most Popular
-            </p>
+            <p v-if="plan.featured" class="plan-badge">Most Popular</p>
 
             <h3>{{ plan.name }}</h3>
 
@@ -308,18 +263,12 @@ const plans = [
           </div>
 
           <ul class="plan-features">
-            <li
-              v-for="feature in plan.features"
-              :key="feature"
-            >
+            <li v-for="feature in plan.features" :key="feature">
               {{ feature }}
             </li>
           </ul>
 
-          <button
-            class="plan-button"
-            @click="openPlanner"
-          >
+          <button class="plan-button" @click="openPlanner">
             Start Planning
           </button>
         </article>
@@ -329,28 +278,20 @@ const plans = [
     <!-- Final CTA -->
     <section class="final-cta">
       <div class="final-cta-image">
-        <img
-          :src="bossImage"
-          alt="RuneScape inspired boss fight"
-        >
+        <img :src="bossImage" alt="RuneScape inspired boss fight" />
       </div>
 
       <div class="final-cta-content">
         <p class="eyebrow">Ready to begin?</p>
 
-        <h2>
-          Build a better training plan.
-        </h2>
+        <h2>Build a better training plan.</h2>
 
         <p>
           Set a clear skill goal, track your progress and keep the useful
           information you need in one place.
         </p>
 
-        <button
-          class="primary-button"
-          @click="openPlanner"
-        >
+        <button class="primary-button" @click="openPlanner">
           Open the Planner
         </button>
       </div>
@@ -385,7 +326,7 @@ const plans = [
 .hero-copy h1 {
   margin: 0 0 1.25rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2.7rem, 9vw, 4.8rem);
   line-height: 1.05;
@@ -417,8 +358,8 @@ const plans = [
   border: none;
   border-radius: 0.35rem;
 
-  background-color: var(--brown-800);
-  color: white;
+  background-color: var(--button-bg);
+  color: var(--button-text);
 
   font-weight: 700;
 
@@ -426,11 +367,11 @@ const plans = [
 }
 
 .primary-button:hover {
-  background-color: var(--brown-700);
+  filter: brightness(1.08);
 }
 
 .secondary-link {
-  color: var(--brown-800);
+  color: var(--link-color);
 
   font-weight: 700;
 
@@ -477,7 +418,7 @@ const plans = [
 .final-cta-content h2 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
@@ -515,7 +456,7 @@ const plans = [
 .feature-item h3 {
   margin: 0 0 0.6rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: 1.35rem;
 }
@@ -588,7 +529,7 @@ const plans = [
 .goal-header h3 {
   margin: 0.25rem 0 0;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: 1.5rem;
 }
@@ -623,7 +564,7 @@ const plans = [
 }
 
 .level-row strong {
-  color: var(--brown-900);
+  color: var(--heading-color);
 }
 
 .progress-bar {
@@ -790,7 +731,7 @@ const plans = [
 .plan h3 {
   margin: 0 0 0.4rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: 1.5rem;
 }
@@ -863,11 +804,11 @@ const plans = [
 
   padding: 0.7rem 1rem;
 
-  border: 1px solid var(--brown-800);
+  border: 1px solid var(--gold-500);
   border-radius: 0.35rem;
 
   background-color: transparent;
-  color: var(--brown-800);
+  color: var(--link-color);
 
   font-weight: 700;
 
@@ -875,7 +816,8 @@ const plans = [
 }
 
 .plan-button:hover {
-  background-color: var(--cream-100);
+  background-color: var(--gold-300);
+  color: var(--brown-900);
 }
 
 .plan.featured .plan-button {

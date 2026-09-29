@@ -25,7 +25,7 @@
       <div class="footer-contact">
         <h4>Contact</h4>
 
-        <a href="mailto:your-email@deakin.edu.au"> your-email@deakin.edu.au </a>
+        <a href="mailto:your-email@deakin.edu.au"> example@deakin.edu.au </a>
       </div>
     </div>
 

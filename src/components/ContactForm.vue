@@ -10,17 +10,9 @@ const props = defineProps({
 
 const emit = defineEmits(["submit-form"]);
 
-const skills = [
-  "Woodcutting",
-  "Fishing",
-  "Mining",
-];
+const skills = ["Woodcutting", "Fishing", "Mining"];
 
-const trainingStyles = [
-  "Fast",
-  "AFK",
-  "Cheap",
-];
+const trainingStyles = ["Fast", "AFK", "Cheap"];
 
 const form = ref({
   goalName: "",
@@ -59,8 +51,7 @@ function validateForm() {
   if (!form.value.goalName.trim()) {
     errors.value.goalName = "Please enter a goal name.";
   } else if (form.value.goalName.trim().length < 3) {
-    errors.value.goalName =
-      "Goal name must be at least 3 characters.";
+    errors.value.goalName = "Goal name must be at least 3 characters.";
   }
 
   if (!form.value.skill) {
@@ -73,8 +64,7 @@ function validateForm() {
     form.value.currentLevel < 1 ||
     form.value.currentLevel > 99
   ) {
-    errors.value.currentLevel =
-      "Current level must be between 1 and 99.";
+    errors.value.currentLevel = "Current level must be between 1 and 99.";
   }
 
   if (
@@ -83,8 +73,7 @@ function validateForm() {
     form.value.targetLevel < 1 ||
     form.value.targetLevel > 99
   ) {
-    errors.value.targetLevel =
-      "Target level must be between 1 and 99.";
+    errors.value.targetLevel = "Target level must be between 1 and 99.";
   } else if (
     form.value.currentLevel !== null &&
     form.value.currentLevel !== "" &&
@@ -95,35 +84,27 @@ function validateForm() {
   }
 
   if (!form.value.targetDate) {
-    errors.value.targetDate =
-      "Please choose a target date.";
+    errors.value.targetDate = "Please choose a target date.";
   } else {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const selectedDate = new Date(
-      form.value.targetDate + "T00:00:00",
-    );
+    const selectedDate = new Date(form.value.targetDate + "T00:00:00");
 
     if (selectedDate <= today) {
-      errors.value.targetDate =
-        "Target date must be after today.";
+      errors.value.targetDate = "Target date must be after today.";
     }
   }
 
   if (!form.value.trainingStyle) {
-    errors.value.trainingStyle =
-      "Please select a training style.";
+    errors.value.trainingStyle = "Please select a training style.";
   }
 
   if (!form.value.reminder) {
-    errors.value.reminder =
-      "Please choose a reminder option.";
+    errors.value.reminder = "Please choose a reminder option.";
   }
 
-  return !Object.values(errors.value).some(
-    (error) => error !== "",
-  );
+  return !Object.values(errors.value).some((error) => error !== "");
 }
 
 function resetForm() {
@@ -177,68 +158,43 @@ function handleSubmit() {
       </p>
     </div>
 
-    <form
-      class="planner-form"
-      @submit.prevent="handleSubmit"
-      novalidate
-    >
+    <form class="planner-form" @submit.prevent="handleSubmit" novalidate>
       <fieldset>
         <legend>Goal details</legend>
 
         <div class="field field-full">
-          <label for="goal-name">
-            Goal name
-          </label>
+          <label for="goal-name"> Goal name </label>
 
           <input
             id="goal-name"
             v-model="form.goalName"
             type="text"
             placeholder="e.g. Reach 85 Woodcutting"
-          >
+          />
 
-          <p
-            v-if="errors.goalName"
-            class="error-message"
-          >
+          <p v-if="errors.goalName" class="error-message">
             {{ errors.goalName }}
           </p>
         </div>
 
         <div class="field field-full">
-          <label for="skill">
-            Skill
-          </label>
+          <label for="skill"> Skill </label>
 
-          <select
-            id="skill"
-            v-model="form.skill"
-          >
-            <option value="">
-              Select a skill
-            </option>
+          <select id="skill" v-model="form.skill">
+            <option value="">Select a skill</option>
 
-            <option
-              v-for="skill in skills"
-              :key="skill"
-              :value="skill"
-            >
+            <option v-for="skill in skills" :key="skill" :value="skill">
               {{ skill }}
             </option>
           </select>
 
-          <p
-            v-if="errors.skill"
-            class="error-message"
-          >
+          <p v-if="errors.skill" class="error-message">
             {{ errors.skill }}
           </p>
         </div>
 
         <div class="field">
-          <label for="current-level">
-            Current level
-          </label>
+          <label for="current-level"> Current level </label>
 
           <input
             id="current-level"
@@ -246,20 +202,15 @@ function handleSubmit() {
             type="number"
             min="1"
             max="99"
-          >
+          />
 
-          <p
-            v-if="errors.currentLevel"
-            class="error-message"
-          >
+          <p v-if="errors.currentLevel" class="error-message">
             {{ errors.currentLevel }}
           </p>
         </div>
 
         <div class="field">
-          <label for="target-level">
-            Target level
-          </label>
+          <label for="target-level"> Target level </label>
 
           <input
             id="target-level"
@@ -267,31 +218,19 @@ function handleSubmit() {
             type="number"
             min="1"
             max="99"
-          >
+          />
 
-          <p
-            v-if="errors.targetLevel"
-            class="error-message"
-          >
+          <p v-if="errors.targetLevel" class="error-message">
             {{ errors.targetLevel }}
           </p>
         </div>
 
         <div class="field field-full">
-          <label for="target-date">
-            Target date
-          </label>
+          <label for="target-date"> Target date </label>
 
-          <input
-            id="target-date"
-            v-model="form.targetDate"
-            type="date"
-          >
+          <input id="target-date" v-model="form.targetDate" type="date" />
 
-          <p
-            v-if="errors.targetDate"
-            class="error-message"
-          >
+          <p v-if="errors.targetDate" class="error-message">
             {{ errors.targetDate }}
           </p>
         </div>
@@ -301,98 +240,56 @@ function handleSubmit() {
         <legend>Preferences</legend>
 
         <div class="field">
-          <label for="training-style">
-            Training style
-          </label>
+          <label for="training-style"> Training style </label>
 
-          <select
-            id="training-style"
-            v-model="form.trainingStyle"
-          >
-            <option value="">
-              Select a style
-            </option>
+          <select id="training-style" v-model="form.trainingStyle">
+            <option value="">Select a style</option>
 
-            <option
-              v-for="style in trainingStyles"
-              :key="style"
-              :value="style"
-            >
+            <option v-for="style in trainingStyles" :key="style" :value="style">
               {{ style }}
             </option>
           </select>
 
-          <p
-            v-if="errors.trainingStyle"
-            class="error-message"
-          >
+          <p v-if="errors.trainingStyle" class="error-message">
             {{ errors.trainingStyle }}
           </p>
         </div>
 
         <div class="field">
-          <span class="field-label">
-            Reminder frequency
-          </span>
+          <span class="field-label"> Reminder frequency </span>
 
           <div class="radio-options">
             <label>
-              <input
-                v-model="form.reminder"
-                type="radio"
-                value="daily"
-              >
+              <input v-model="form.reminder" type="radio" value="daily" />
               Daily
             </label>
 
             <label>
-              <input
-                v-model="form.reminder"
-                type="radio"
-                value="weekly"
-              >
+              <input v-model="form.reminder" type="radio" value="weekly" />
               Weekly
             </label>
 
             <label>
-              <input
-                v-model="form.reminder"
-                type="radio"
-                value="none"
-              >
+              <input v-model="form.reminder" type="radio" value="none" />
               None
             </label>
           </div>
 
-          <p
-            v-if="errors.reminder"
-            class="error-message"
-          >
+          <p v-if="errors.reminder" class="error-message">
             {{ errors.reminder }}
           </p>
         </div>
 
         <label class="checkbox-field">
-          <input
-            v-model="form.includeAfk"
-            type="checkbox"
-          >
+          <input v-model="form.includeAfk" type="checkbox" />
 
           Include lower-effort AFK alternatives in my training plan
         </label>
       </fieldset>
 
-      <button
-        class="submit-button"
-        type="submit"
-      >
-        Create Goal
-      </button>
+      <button class="submit-button" type="submit">Create Goal</button>
 
-      <p
-        v-if="showSuccess"
-        class="success-message"
-      >
+      <p v-if="showSuccess" class="success-message">
         Goal created successfully.
       </p>
     </form>
@@ -417,7 +314,7 @@ function handleSubmit() {
 .form-heading h2 {
   margin: 0 0 1rem;
 
-  color: var(--brown-900);
+  color: var(--heading-color);
 
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
@@ -457,7 +354,7 @@ fieldset {
 legend {
   padding: 0 0.4rem;
 
-  color: var(--brown-800);
+  color: var(--heading-color);
 
   font-family: "MedievalSharp", cursive;
   font-size: 1.2rem;
@@ -472,7 +369,7 @@ legend {
 
 .field label,
 .field-label {
-  color: var(--brown-900);
+  color: var(--text);
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -487,7 +384,7 @@ legend {
   border: 1px solid var(--border);
   border-radius: 0.35rem;
 
-  background-color: white;
+  background-color: var(--surface);
   color: var(--text);
 }
 
@@ -542,8 +439,8 @@ legend {
   border: none;
   border-radius: 0.35rem;
 
-  background-color: var(--brown-800);
-  color: white;
+  background-color: var(--button-bg);
+  color: var(--button-text);
 
   font-weight: 700;
 
@@ -551,13 +448,13 @@ legend {
 }
 
 .submit-button:hover {
-  background-color: var(--brown-700);
+  filter: brightness(1.08);
 }
 
 .error-message {
   margin: 0.2rem 0 0;
 
-  color: #a13a32;
+  color: #c6534a;
 
   font-size: 0.8rem;
 }
@@ -565,7 +462,7 @@ legend {
 .success-message {
   margin: 0;
 
-  color: #2d6a3f;
+  color: #2d8a4c;
 
   font-weight: 700;
 }
