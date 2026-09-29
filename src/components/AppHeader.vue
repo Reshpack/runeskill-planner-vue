@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import { useThemeStore } from "../stores/theme";
+import { useSavedMethodsStore } from "../stores/savedMethods";
 
+const savedMethodsStore = useSavedMethodsStore();
 const themeStore = useThemeStore();
 
 const menuOpen = ref(false);
@@ -23,6 +25,9 @@ function closeMenu() {
       </RouterLink>
 
       <div class="header-right">
+        <span class="saved-badge">
+          Saved {{ savedMethodsStore.totalCount }}
+        </span>
         <button
           class="theme-toggle"
           @click="themeStore.toggleDarkMode"
@@ -61,6 +66,18 @@ function closeMenu() {
 </template>
 
 <style scoped>
+.saved-badge {
+  padding: 0.35rem 0.6rem;
+
+  border: 1px solid var(--gold-500);
+  border-radius: 0.35rem;
+
+  color: var(--gold-300);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .header-right {
   display: flex;
   align-items: center;

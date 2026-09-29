@@ -1,9 +1,33 @@
 <script setup>
-import fishingGuideImage from "../assets/images/3-tick-fishing.gif";
 import { ref } from "vue";
+import fishingGuideImage from "../assets/images/3-tick-fishing.gif";
 import ContactForm from "./ContactForm.vue";
+import { useSavedMethodsStore } from "../stores/savedMethods";
+
+const savedMethodsStore = useSavedMethodsStore();
 
 const submittedGoal = ref(null);
+
+const trainingMethods = [
+  {
+    id: 1,
+    skill: "Fishing",
+    name: "Barbarian Fishing",
+    style: "Fast",
+  },
+  {
+    id: 2,
+    skill: "Woodcutting",
+    name: "Sulliuscep Cutting",
+    style: "Balanced",
+  },
+  {
+    id: 3,
+    skill: "Mining",
+    name: "Motherlode Mine",
+    style: "AFK",
+  },
+];
 
 function handleFormSubmit(goal) {
   submittedGoal.value = goal;
@@ -168,10 +192,114 @@ const goals = [
         </div>
       </article>
     </section>
+    <section class="methods-section">
+      <div class="methods-heading">
+        <p class="eyebrow">Training methods</p>
+
+        <h2>Save methods for later.</h2>
+
+        <p>
+          Keep useful training options together while planning your next goal.
+        </p>
+      </div>
+
+      <div class="methods-grid">
+        <article
+          v-for="method in trainingMethods"
+          :key="method.id"
+          class="method-card"
+        >
+          <p class="method-skill">
+            {{ method.skill }}
+          </p>
+
+          <h3>{{ method.name }}</h3>
+
+          <p>{{ method.style }} training</p>
+
+          <button
+            class="method-button"
+            @click="savedMethodsStore.addItem(method)"
+          >
+            Save Method
+          </button>
+        </article>
+      </div>
+    </section>
+    <div class="saved-summary">
+      <div>
+        <p class="eyebrow">Saved methods</p>
+
+        <h3>
+          {{ savedMethodsStore.formattedSummary }}
+        </h3>
+      </div>
+
+      <button
+        v-if="savedMethodsStore.totalCount > 0"
+        class="reset-button"
+        @click="savedMethodsStore.resetStore"
+      >
+        Clear All
+      </button>
+
+      <ul v-if="savedMethodsStore.totalCount > 0">
+        <li v-for="method in savedMethodsStore.savedMethods" :key="method.id">
+          <span> {{ method.skill }} — {{ method.name }} </span>
+
+          <button @click="savedMethodsStore.removeItem(method.id)">
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
     <ContactForm
       form-title="Create Your Next Skill Goal"
       @submit-form="handleFormSubmit"
     />
+    <article v-if="submittedGoal" class="acknowledgement-card">
+      <p class="acknowledgement-label">Goal created</p>
+
+      <h3>
+        {{ submittedGoal.goalName }}
+      </h3>
+
+      <p>Your new training goal has been saved with the following details:</p>
+
+      <ul>
+        <li>
+          <strong>Skill:</strong>
+          {{ submittedGoal.skill }}
+        </li>
+
+        <li>
+          <strong>Levels:</strong>
+          {{ submittedGoal.currentLevel }}
+          →
+          {{ submittedGoal.targetLevel }}
+        </li>
+
+        <li>
+          <strong>Target date:</strong>
+          {{ submittedGoal.targetDate }}
+        </li>
+
+        <li>
+          <strong>Training style:</strong>
+          {{ submittedGoal.trainingStyle }}
+        </li>
+
+        <li>
+          <strong>Reminder:</strong>
+          {{ submittedGoal.reminder }}
+        </li>
+
+        <li>
+          <strong>AFK alternatives:</strong>
+          {{ submittedGoal.includeAfk ? "Included" : "Not included" }}
+        </li>
+      </ul>
+    </article>
   </main>
 </template>
 
@@ -461,6 +589,169 @@ const goals = [
   text-underline-offset: 0.25rem;
 }
 
+.methods-section {
+  max-width: var(--max-width);
+
+  margin: 0 auto;
+  padding: 5rem 1.25rem;
+}
+
+.methods-heading {
+  max-width: 42rem;
+
+  margin-bottom: 2rem;
+}
+
+.methods-heading h2 {
+  margin: 0 0 1rem;
+
+  color: var(--heading-color);
+
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.methods-heading > p:last-child {
+  color: var(--text-muted);
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 1rem;
+}
+
+.method-card {
+  padding: 1.5rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+
+  background-color: var(--surface);
+}
+
+.method-skill {
+  margin: 0;
+
+  color: var(--gold-500);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.method-card h3 {
+  margin: 0.5rem 0;
+
+  color: var(--heading-color);
+}
+
+.method-card > p:last-of-type {
+  color: var(--text-muted);
+}
+
+.method-button {
+  padding: 0.6rem 0.9rem;
+
+  border: none;
+  border-radius: 0.35rem;
+
+  background-color: var(--button-bg);
+  color: var(--button-text);
+
+  cursor: pointer;
+}
+
+.saved-summary {
+  margin-top: 2rem;
+  padding: 1.5rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+
+  background-color: var(--surface);
+}
+
+.saved-summary h3 {
+  margin: 0;
+
+  color: var(--heading-color);
+}
+
+.saved-summary ul {
+  margin: 1.5rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.saved-summary li {
+  padding: 0.75rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 0.5rem;
+
+  border-top: 1px solid var(--border);
+}
+
+.saved-summary button,
+.reset-button {
+  padding: 0.4rem 0.7rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+
+  background-color: transparent;
+  color: var(--text);
+
+  cursor: pointer;
+}
+
+.acknowledgement-card {
+  width: calc(100% - 2.5rem);
+  max-width: 48rem;
+
+  margin: 0 auto 5rem;
+  padding: 1.75rem;
+
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold-500);
+  border-radius: 0.5rem;
+
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.acknowledgement-label {
+  margin: 0 0 0.4rem;
+
+  color: var(--gold-500);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.acknowledgement-card h3 {
+  margin: 0 0 0.75rem;
+
+  color: var(--heading-color);
+
+  font-size: 1.6rem;
+}
+
+.acknowledgement-card p {
+  color: var(--text-muted);
+}
+
+.acknowledgement-card ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
 @media (min-width: 768px) {
   .section-heading {
     flex-direction: row;
@@ -468,13 +759,21 @@ const goals = [
     justify-content: space-between;
   }
 
+  .methods-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .goal-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (min-width: 900px) {
-  .guide-card {
+  .saved-summary li {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+    .guide-card {
     grid-template-columns: 1fr 1fr;
 
     gap: 4rem;
@@ -483,6 +782,10 @@ const goals = [
 
 @media (min-width: 1024px) {
   .goal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .methods-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
