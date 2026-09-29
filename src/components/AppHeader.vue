@@ -1,24 +1,13 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({
-  activeView: {
-    type: String,
-    default: "home",
-  },
-});
-
-const emit = defineEmits(["change-view"]);
-
 const menuOpen = ref(false);
 
 function toggleMenu() {
   menuOpen.value = !menuOpen.value;
 }
 
-function changeView(view) {
-  emit("change-view", view);
-
+function closeMenu() {
   menuOpen.value = false;
 }
 </script>
@@ -26,13 +15,14 @@ function changeView(view) {
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <a
-        href="#home"
+
+      <RouterLink
+        to="/"
         class="brand"
-        @click.prevent="changeView('home')"
+        @click="closeMenu"
       >
         RuneSkill Planner
-      </a>
+      </RouterLink>
 
       <button
         class="menu-toggle"
@@ -48,30 +38,30 @@ function changeView(view) {
         :class="{ open: menuOpen }"
         aria-label="Main navigation"
       >
-        <a
-          href="#home"
-          @click.prevent="changeView('home')"
-          :class="{ active: activeView === 'home' }"
+
+        <RouterLink
+          to="/"
+          @click="closeMenu"
         >
           Home
-        </a>
+        </RouterLink>
 
-        <a
-          href="#planner"
-          @click.prevent="changeView('planner')"
-          :class="{ active: activeView === 'planner' }"
+        <RouterLink
+          to="/planner"
+          @click="closeMenu"
         >
           Planner
-        </a>
+        </RouterLink>
 
-        <a
-          href="#about"
-          @click.prevent="changeView('about')"
-          :class="{ active: activeView === 'about' }"
+        <RouterLink
+          to="/about"
+          @click="closeMenu"
         >
           About
-        </a>
+        </RouterLink>
+
       </nav>
+
     </div>
   </header>
 </template>
@@ -152,7 +142,7 @@ function changeView(view) {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.nav-links a.active {
+.nav-links a.router-link-active {
   background-color: var(--gold-300);
   color: var(--brown-900);
 }

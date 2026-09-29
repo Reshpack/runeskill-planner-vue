@@ -1,11 +1,3 @@
-<script setup>
-const emit = defineEmits(["change-view"]);
-
-function changeView(view) {
-  emit("change-view", view);
-}
-</script>
-
 <template>
   <footer class="site-footer">
     <div class="footer-inner">
@@ -13,56 +5,32 @@ function changeView(view) {
         <h3>RuneSkill Planner</h3>
 
         <p>
-          A RuneScape-inspired planning tool for organising
-          skill goals and training progress.
+          A RuneScape-inspired planning tool for organising skill goals and
+          training progress.
         </p>
 
-        <p class="project-note">
-          SIT120 student project.
-        </p>
+        <p class="project-note">SIT120 student project.</p>
       </div>
 
-      <nav
-        class="footer-nav"
-        aria-label="Footer navigation"
-      >
+      <nav class="footer-nav" aria-label="Footer navigation">
         <h4>Navigate</h4>
 
-        <a
-          href="#home"
-          @click.prevent="changeView('home')"
-        >
-          Home
-        </a>
+        <RouterLink to="/"> Home </RouterLink>
 
-        <a
-          href="#planner"
-          @click.prevent="changeView('planner')"
-        >
-          Planner
-        </a>
+        <RouterLink to="/planner"> Planner </RouterLink>
 
-        <a
-          href="#about"
-          @click.prevent="changeView('about')"
-        >
-          About
-        </a>
+        <RouterLink to="/about"> About </RouterLink>
       </nav>
 
       <div class="footer-contact">
         <h4>Contact</h4>
 
-        <a href="mailto:your-email@deakin.edu.au">
-          your-email@deakin.edu.au
-        </a>
+        <a href="mailto:your-email@deakin.edu.au"> your-email@deakin.edu.au </a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>
-        &copy; 2026 RuneSkill Planner. Website by Suresh Packiry.
-      </p>
+      <p>&copy; 2026 RuneSkill Planner. Website by Suresh Packiry.</p>
     </div>
   </footer>
 </template>

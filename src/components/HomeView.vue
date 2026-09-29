@@ -4,7 +4,13 @@ import woodcuttingImage from "../assets/images/wcing.jpg";
 import farmingImage from "../assets/images/farming.png";
 import bossImage from "../assets/images/boss-fight.jpg";
 
-const emit = defineEmits(["change-view"]);
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+function openPlanner() {
+  router.push("/planner");
+}
 
 const features = [
   {
@@ -63,9 +69,7 @@ const plans = [
   },
 ];
 
-function openPlanner() {
-  emit("change-view", "planner");
-}
+
 </script>
 
 <template>
