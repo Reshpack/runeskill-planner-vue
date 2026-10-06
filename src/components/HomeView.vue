@@ -765,17 +765,16 @@ const plans = [
   width: fit-content;
 
   margin: 0 0 1rem;
-  padding: 0.25rem 0.55rem;
+  padding: 0;
 
-  border-radius: 1rem;
-
-  background-color: var(--gold-300);
-  color: var(--brown-900);
+  background-color: transparent;
+  color: var(--gold-500);
 
   font-size: 0.7rem;
   font-weight: 700;
 
   text-transform: uppercase;
+  letter-spacing: 0.08rem;
 }
 
 .plan-features {

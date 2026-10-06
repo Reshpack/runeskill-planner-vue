@@ -25,9 +25,9 @@ function closeMenu() {
       </RouterLink>
 
       <div class="header-right">
-        <span class="saved-badge">
+        <RouterLink to="/planner" class="saved-badge">
           Saved {{ savedMethodsStore.totalCount }}
-        </span>
+        </RouterLink>
         <button
           class="theme-toggle"
           @click="themeStore.toggleDarkMode"
@@ -37,7 +37,7 @@ function closeMenu() {
               : 'Switch to dark mode'
           "
         >
-          {{ themeStore.isDarkMode ? "☀" : "☾" }}
+          {{ themeStore.isDarkMode ? "☀ Light" : "☾ Dark" }}
         </button>
 
         <button
@@ -67,15 +67,17 @@ function closeMenu() {
 
 <style scoped>
 .saved-badge {
-  padding: 0.35rem 0.6rem;
-
-  border: 1px solid var(--gold-500);
-  border-radius: 0.35rem;
-
   color: var(--gold-300);
 
   font-size: 0.8rem;
   font-weight: 700;
+
+  text-decoration: none;
+}
+
+.saved-badge:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 .header-right {
@@ -105,9 +107,11 @@ function closeMenu() {
 }
 
 .theme-toggle {
-  padding: 0.4rem 0.65rem;
+  min-height: 44px;
 
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.55rem 0.75rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 0.35rem;
 
   background-color: transparent;

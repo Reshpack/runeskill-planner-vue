@@ -77,10 +77,10 @@ textarea {
 }
 
 .theme-dark {
-  --cream-50: #171411;
-  --cream-100: #201c18;
+  --cream-50: #14110f;
+  --cream-100: #1c1814;
 
-  --surface: #27211c;
+  --surface: #28211b;
 
   --text: #f1e9de;
   --text-muted: #cbbdad;
@@ -91,16 +91,11 @@ textarea {
   --button-bg: #d6a15f;
   --button-text: #21170f;
 
-  --border: #514338;
+  --border: #5b493b;
 
   --gold-500: #dda85f;
   --gold-300: #e8c58e;
 
-  background-color: var(--cream-50);
-  color: var(--text);
-}
-
-.theme-light {
   background-color: var(--cream-50);
   color: var(--text);
 }

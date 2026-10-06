@@ -662,7 +662,10 @@ const goals = [
 }
 
 .saved-summary {
-  margin-top: 2rem;
+  width: calc(100% - 2.5rem);
+  max-width: var(--max-width);
+
+  margin: 2rem auto 0;
   padding: 1.5rem;
 
   border: 1px solid var(--border);
